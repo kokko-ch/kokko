@@ -39,5 +39,5 @@ task('deploy:writable')->disable();
 
 // Hooks
 
-after('deploy:update_code', 'npm');
+after('deploy:vendors', 'npm');
 after('deploy:failed', 'deploy:unlock');
