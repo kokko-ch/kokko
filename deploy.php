@@ -35,7 +35,7 @@ task('npm', [
     'npm:build',
 ]);
 
-task('deploy:writable')->disable();
+// task('deploy:writable')->disable();
 
 // Hooks
 
