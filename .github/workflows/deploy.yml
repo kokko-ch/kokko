@@ -26,4 +26,5 @@ jobs:
         with:
           private-key: ${{ secrets.PRIVATE_KEY }}
           dep: deploy -o remote_user=${{ secrets.REMOTE_USER }}
+          known-hosts: ${{ secrets.KNOWN-HOSTS }}
           deployer-version: '7.0.2'
