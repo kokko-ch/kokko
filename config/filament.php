@@ -241,7 +241,7 @@ return [
         'max_content_width' => null,
         'notifications' => [
             'vertical_alignment' => 'top',
-            'alignment' => 'right',
+            'alignment' => 'center',
         ],
         'sidebar' => [
             'is_collapsible_on_desktop' => true,
@@ -300,7 +300,7 @@ return [
     |
     */
 
-    'google_fonts' => 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap',
+    'google_fonts' => 'https://fonts.bunny.net/css2?family=Nunito:wght@400;500;600;700&display=swap',
 
     /*
     |--------------------------------------------------------------------------

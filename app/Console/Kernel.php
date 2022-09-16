@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Models\NotificationJob;
+use App\Notifications\RecurringNotification;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +17,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        foreach (
+            NotificationJob::where('is_active', true)->get() as $notificationJob
+        ) {
+            $schedule->call(function () use ($notificationJob) {
+                $notificationJob
+                    ->user
+                    ->notify(new RecurringNotification($notificationJob));
+            })->cron(
+                "{$notificationJob->minute} {$notificationJob->hour} {$notificationJob->day} {$notificationJob->month} {$notificationJob->weekday}"
+            )->timezone($notificationJob->timezone);
+        }
     }
 
     /**
