@@ -7,5 +7,5 @@ cp .env.example .env
 ```
 
 ```bash
-php artisan key:generate
+php81 artisan key:generate
 ```
