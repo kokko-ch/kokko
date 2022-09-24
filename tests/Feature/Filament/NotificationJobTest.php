@@ -84,6 +84,7 @@ class NotificationJobTest extends TestCase
                 'month' => $newData->month,
                 'weekday' => $newData->weekday,
                 'timezone' => $newData->timezone,
+                'event' => $newData->event,
                 'title' => $newData->title,
                 'content' => $newData->content,
                 'is_active' => $newData->is_active,
@@ -101,6 +102,7 @@ class NotificationJobTest extends TestCase
             'timezone' => $newData->timezone == $user->timezone
                           ? null
                           : $newData->timezone,
+            'event' => $newData->event,
             'title' => empty($newData->title) ? null : $newData->title,
             'content' => $this->castAsJson($newData->content),
             'is_active' => intval($newData->is_active),
@@ -122,6 +124,7 @@ class NotificationJobTest extends TestCase
                 'day' => null,
                 'month' => null,
                 'weekday' => null,
+                'event' => null,
                 'content' => null,
                 'is_active' => null,
             ])
@@ -132,6 +135,7 @@ class NotificationJobTest extends TestCase
                 'day' => 'required',
                 'month' => 'required',
                 'weekday' => 'required',
+                'event' => 'required',
                 'content' => 'required',
                 'is_active' => 'required',
             ]);
@@ -216,6 +220,7 @@ class NotificationJobTest extends TestCase
                 'month' => $newData->month,
                 'weekday' => $newData->weekday,
                 'timezone' => $newData->timezone,
+                'event' => $newData->event,
                 'title' => $newData->title,
                 'content' => $newData->content,
                 'is_active' => $newData->is_active,
@@ -232,6 +237,7 @@ class NotificationJobTest extends TestCase
         $this->assertSame($notificationJob->month, $newData->month);
         $this->assertSame($notificationJob->weekday, $newData->weekday);
         $this->assertSame($notificationJob->timezone, $newData->timezone);
+        $this->assertSame($notificationJob->event, $newData->event);
         $this->assertSame(
             $notificationJob->title,
             empty($newData->title) ? null : $newData->title
@@ -257,6 +263,7 @@ class NotificationJobTest extends TestCase
                 'day' => null,
                 'month' => null,
                 'weekday' => null,
+                'event' => null,
                 'content' => null,
                 'is_active' => null,
             ])
@@ -267,6 +274,7 @@ class NotificationJobTest extends TestCase
                 'day' => 'required',
                 'month' => 'required',
                 'weekday' => 'required',
+                'event' => 'required',
                 'content' => 'required',
                 'is_active' => 'required',
             ]);

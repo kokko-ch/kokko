@@ -68,7 +68,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
      */
     public function routeNotificationForIfttt($notification)
     {
-        $event = 'kokko';
+        $event = $notification->notificationJob->event;
         $key = $this->ifttt_key;
 
         return "https://maker.ifttt.com/trigger/{$event}/with/key/{$key}";
