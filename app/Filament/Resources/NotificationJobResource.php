@@ -65,7 +65,8 @@ class NotificationJobResource extends Resource
                         Forms\Components\TextInput::make('title'),
                         Forms\Components\Repeater::make('content')
                             ->schema([
-                                Forms\Components\TextInput::make('content')->required(),
+                                Forms\Components\TextInput::make('content')
+                                    ->required(),
                             ])
                             ->required(),
                         Forms\Components\Hidden::make('is_active')
