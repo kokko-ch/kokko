@@ -62,6 +62,7 @@ class NotificationJobResource extends Resource
                     ->columns(5),
                 Forms\Components\Grid::make(1)
                     ->schema([
+                        Forms\Components\TextInput::make('event')->required(),
                         Forms\Components\TextInput::make('title'),
                         Forms\Components\Repeater::make('content')
                             ->schema([
@@ -87,6 +88,7 @@ class NotificationJobResource extends Resource
                 Tables\Columns\TextColumn::make('month'),
                 Tables\Columns\TextColumn::make('weekday'),
                 Tables\Columns\TextColumn::make('timezone'),
+                Tables\Columns\TextColumn::make('event'),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TagsColumn::make('content')
                     ->getStateUsing(function (NotificationJob $record) {

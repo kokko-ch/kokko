@@ -25,6 +25,7 @@ class NotificationJobFactory extends Factory
             'month' => '*',
             'weekday' => '*',
             'timezone' => fake()->optional()->timezone(),
+            'event' => fake()->word(),
             'title' => Str::ucfirst(fake()->optional()->word()),
             'content' => Arr::map(
                 fake()->sentences(random_int(1, 3)), function ($value) {

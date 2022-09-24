@@ -23,6 +23,7 @@ class NotificationJob extends Model
         'month',
         'weekday',
         'timezone',
+        'event',
         'title',
         'content',
         'is_active',
