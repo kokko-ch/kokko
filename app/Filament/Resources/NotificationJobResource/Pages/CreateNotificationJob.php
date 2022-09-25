@@ -9,6 +9,10 @@ class CreateNotificationJob extends CreateRecord
 {
     protected static string $resource = NotificationJobResource::class;
 
+    /**
+     * @param  mixed[]  $data
+     * @return mixed[]
+     */
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['user_id'] = auth()->id();

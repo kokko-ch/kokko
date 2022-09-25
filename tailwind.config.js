@@ -22,7 +22,7 @@ module.exports = {
                 primary: colors.sky,
                 success: colors.emerald,
                 warning: colors.yellow,
-            }
+            },
         },
     },
 

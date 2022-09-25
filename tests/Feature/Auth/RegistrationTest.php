@@ -10,14 +10,14 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_not_be_rendered()
+    public function test_registration_screen_can_not_be_rendered(): void
     {
         $response = $this->get('/register');
 
         $response->assertStatus(404);
     }
 
-    public function test_new_users_can_not_register()
+    public function test_new_users_can_not_register(): void
     {
         $response = $this->post('/register', [
             'name' => 'Test User',

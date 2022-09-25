@@ -10,6 +10,9 @@ class EditUser extends EditRecord
 {
     protected static string $resource = UserResource::class;
 
+    /**
+     * @return array<Actions\Action>
+     */
     protected function getActions(): array
     {
         return [
@@ -17,6 +20,9 @@ class EditUser extends EditRecord
         ];
     }
 
+    /**
+     * @return array<Actions\Action>
+     */
     protected function getFormActions(): array
     {
         $formActions = parent::getFormActions();

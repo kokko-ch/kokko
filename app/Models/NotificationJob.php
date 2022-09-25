@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property User $user
+ */
 class NotificationJob extends Model
 {
     use HasFactory;
@@ -42,9 +45,9 @@ class NotificationJob extends Model
     /**
      * Interact with the notification job's timezone.
      *
-     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute<string, string>
      */
-    protected function timezone(): Attribute
+    public function timezone(): Attribute
     {
         $user = $this->user ?? auth()->user();
 
@@ -56,6 +59,8 @@ class NotificationJob extends Model
 
     /**
      * Get the user that owns the notification job.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, NotificationJob>
      */
     public function user()
     {

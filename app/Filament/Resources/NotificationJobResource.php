@@ -18,6 +18,9 @@ class NotificationJobResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bell';
 
+    /**
+     * @return Builder<NotificationJob>
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->whereBelongsTo(auth()->user());
@@ -25,7 +28,8 @@ class NotificationJobResource extends Resource
 
     protected static function getNavigationBadge(): ?string
     {
-        return static::getEloquentQuery()->where('is_active', true)->count();
+        return strval(static::getEloquentQuery()->where('is_active', true)
+                                                ->count());
     }
 
     public static function form(Form $form): Form
@@ -94,6 +98,7 @@ class NotificationJobResource extends Resource
                     ->getStateUsing(function (NotificationJob $record) {
                         return Arr::pluck($record->content, 'content');
                     }),
+                /** @phpstan-ignore-next-line */
                 Tables\Columns\BooleanColumn::make('is_active')
                     ->toggle(),
             ])
@@ -108,13 +113,16 @@ class NotificationJobResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+    // public static function getRelations(): array
+    // {
+    //     return [
+    //         //
+    //     ];
+    // }
 
+    /**
+     * @return array<string, string[]>
+     */
     public static function getPages(): array
     {
         return [
