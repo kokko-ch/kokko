@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property Collection<NotificationJob> $notificationJobs
+ */
 class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -50,9 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     /**
      * Interact with the user's timezone.
      *
-     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute<string, string>
      */
-    protected function timezone(): Attribute
+    public function timezone(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => $value ?? config('app.timezone'),
@@ -63,7 +66,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     /**
      * Route notifications for the IFTTT channel.
      *
-     * @param  \Illuminate\Notifications\Notification  $notification
+     * @param  \App\Notifications\RecurringNotification  $notification
      * @return string
      */
     public function routeNotificationForIfttt($notification)
@@ -76,6 +79,8 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 
     /**
      * Get the notification jobs for the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<NotificationJob>
      */
     public function notificationJobs()
     {

@@ -10,6 +10,9 @@ class EditNotificationJob extends EditRecord
 {
     protected static string $resource = NotificationJobResource::class;
 
+    /**
+     * @return array<Actions\Action>
+     */
     protected function getActions(): array
     {
         return [

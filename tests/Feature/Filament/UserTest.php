@@ -15,7 +15,7 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_list_page_can_be_rendered()
+    public function test_list_page_can_be_rendered(): void
     {
         $user = User::factory()->create();
 
@@ -24,7 +24,7 @@ class UserTest extends TestCase
         $response->assertSuccessful();
     }
 
-    public function test_page_can_list_user()
+    public function test_page_can_list_user(): void
     {
         $user = User::factory()->create();
 
@@ -35,7 +35,7 @@ class UserTest extends TestCase
         $response->assertCanSeeTableRecords([$user]);
     }
 
-    public function test_page_cannot_list_other_users()
+    public function test_page_cannot_list_other_users(): void
     {
         $users = User::factory()->count(10)->create();
 
@@ -46,7 +46,7 @@ class UserTest extends TestCase
         $response->assertCanNotSeeTableRecords($users);
     }
 
-    public function test_create_page_cannot_be_rendered()
+    public function test_create_page_cannot_be_rendered(): void
     {
         $user = User::factory()->create();
 
@@ -55,7 +55,7 @@ class UserTest extends TestCase
         $response->assertForbidden();
     }
 
-    public function test_edit_page_can_be_rendered()
+    public function test_edit_page_can_be_rendered(): void
     {
         $user = User::factory()->create();
 
@@ -66,7 +66,7 @@ class UserTest extends TestCase
         $response->assertSuccessful();
     }
 
-    public function test_page_cannot_edit_other_user()
+    public function test_page_cannot_edit_other_user(): void
     {
         $user = User::factory()->create();
 
@@ -77,7 +77,7 @@ class UserTest extends TestCase
         $response->assertNotFound();
     }
 
-    public function test_edit_page_can_retrieve_data()
+    public function test_edit_page_can_retrieve_data(): void
     {
         $user = User::factory()->create();
 
@@ -95,7 +95,7 @@ class UserTest extends TestCase
         ]);
     }
 
-    public function test_edit_page_can_save()
+    public function test_edit_page_can_save(): void
     {
         $user = User::factory()->create();
         $newData = User::factory()->make();
@@ -122,7 +122,7 @@ class UserTest extends TestCase
         $this->assertSame($user->ifttt_key, $newData->ifttt_key);
     }
 
-    public function test_edit_page_can_validate_input()
+    public function test_edit_page_can_validate_input(): void
     {
         $user = User::factory()->create();
 
@@ -145,7 +145,7 @@ class UserTest extends TestCase
             ]);
     }
 
-    public function test_edit_page_can_delete()
+    public function test_edit_page_can_delete(): void
     {
         $user = User::factory()->create();
 
@@ -159,7 +159,7 @@ class UserTest extends TestCase
         $this->assertModelMissing($user);
     }
 
-    public function test_edit_page_cannot_delete_other_user()
+    public function test_edit_page_cannot_delete_other_user(): void
     {
         $user = User::factory()->create();
 
@@ -173,7 +173,7 @@ class UserTest extends TestCase
             ->callPageAction(DeleteAction::class);
     }
 
-    public function test_view_page_cannot_be_rendered()
+    public function test_view_page_cannot_be_rendered(): void
     {
         $user = User::factory()->create();
 

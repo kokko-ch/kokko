@@ -16,7 +16,7 @@ class NotificationJobTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_list_page_can_be_rendered()
+    public function test_list_page_can_be_rendered(): void
     {
         $user = User::factory()->create();
 
@@ -26,7 +26,7 @@ class NotificationJobTest extends TestCase
         $response->assertSuccessful();
     }
 
-    public function test_page_can_list_notification_jobs()
+    public function test_page_can_list_notification_jobs(): void
     {
         $user = User::factory()->hasNotificationJobs(3)->create();
 
@@ -39,7 +39,7 @@ class NotificationJobTest extends TestCase
         $response->assertCanSeeTableRecords($user->notificationJobs);
     }
 
-    public function test_page_cannot_list_other_notification_jobs()
+    public function test_page_cannot_list_other_notification_jobs(): void
     {
         $user = User::factory()->hasNotificationJobs(3)->create();
 
@@ -57,7 +57,7 @@ class NotificationJobTest extends TestCase
         );
     }
 
-    public function test_create_page_can_be_rendered()
+    public function test_create_page_can_be_rendered(): void
     {
         $user = User::factory()->create();
 
@@ -67,7 +67,7 @@ class NotificationJobTest extends TestCase
         $response->assertSuccessful();
     }
 
-    public function test_create_page_can_create()
+    public function test_create_page_can_create(): void
     {
         $user = User::factory()->create();
         $newData = NotificationJob::factory()->make();
@@ -109,7 +109,7 @@ class NotificationJobTest extends TestCase
         ]);
     }
 
-    public function test_create_page_can_validate_input()
+    public function test_create_page_can_validate_input(): void
     {
         $user = User::factory()->create();
 
@@ -141,7 +141,7 @@ class NotificationJobTest extends TestCase
             ]);
     }
 
-    public function test_edit_page_can_be_rendered()
+    public function test_edit_page_can_be_rendered(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
 
@@ -153,7 +153,7 @@ class NotificationJobTest extends TestCase
         $response->assertSuccessful();
     }
 
-    public function test_page_cannot_edit_other_notification_job()
+    public function test_page_cannot_edit_other_notification_job(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
 
@@ -169,7 +169,7 @@ class NotificationJobTest extends TestCase
         $response->assertNotFound();
     }
 
-    public function test_edit_page_can_retrieve_data()
+    public function test_edit_page_can_retrieve_data(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
         $notificationJob = $user->notificationJobs()->first();
@@ -200,7 +200,7 @@ class NotificationJobTest extends TestCase
         );
     }
 
-    public function test_edit_page_can_save()
+    public function test_edit_page_can_save(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
         $notificationJob = $user->notificationJobs()->first();
@@ -246,7 +246,7 @@ class NotificationJobTest extends TestCase
         $this->assertSame($notificationJob->is_active, $newData->is_active);
     }
 
-    public function test_edit_page_can_validate_input()
+    public function test_edit_page_can_validate_input(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
 
@@ -280,7 +280,7 @@ class NotificationJobTest extends TestCase
             ]);
     }
 
-    public function test_edit_page_can_delete()
+    public function test_edit_page_can_delete(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
         $notificationJob = $user->notificationJobs()->first();
@@ -297,7 +297,7 @@ class NotificationJobTest extends TestCase
         $this->assertModelMissing($notificationJob);
     }
 
-    public function test_edit_page_cannot_delete_other_notification_job()
+    public function test_edit_page_cannot_delete_other_notification_job(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
 
@@ -317,7 +317,7 @@ class NotificationJobTest extends TestCase
             ->callPageAction(DeleteAction::class);
     }
 
-    public function test_view_page_cannot_be_rendered()
+    public function test_view_page_cannot_be_rendered(): void
     {
         $user = User::factory()->hasNotificationJobs()->create();
 

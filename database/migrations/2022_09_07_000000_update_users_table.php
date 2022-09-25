@@ -27,8 +27,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('ifttt_key');
-            $table->dropColumn('timezone');
+            $table->dropColumn([
+                'ifttt_key',
+                'timezone',
+            ]);
         });
     }
 };

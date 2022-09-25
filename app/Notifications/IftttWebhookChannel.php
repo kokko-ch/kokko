@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Http;
 
 class IftttWebhookChannel
@@ -11,13 +10,13 @@ class IftttWebhookChannel
      * Send the given notification.
      *
      * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
-     * @return Illuminate\Http\Client\Response|null
+     * @param  RecurringNotification  $notification
+     * @return \Illuminate\Http\Client\Response|null
      */
-    public function send($notifiable, Notification $notification)
+    public function send($notifiable, RecurringNotification $notification)
     {
         if (! $url = $notifiable->routeNotificationFor('ifttt', $notification)) {
-            return;
+            return null;
         }
 
         return Http::post($url, $this->buildJsonPayload(
@@ -29,7 +28,7 @@ class IftttWebhookChannel
      * Build up a JSON payload for the IFTTT webhook.
      *
      * @param  IftttMessage  $message
-     * @return array
+     * @return array<string, string>
      */
     protected function buildJsonPayload(IftttMessage $message)
     {

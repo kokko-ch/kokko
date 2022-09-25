@@ -48,6 +48,7 @@ class FilamentServiceProvider extends ServiceProvider
 
         Filament::serving(function () {
             BooleanColumn::macro('toggle', function () {
+                /** @var BooleanColumn $this */
                 $this->action(function ($record, $column) {
                     $name = $column->getName();
                     $record->update([

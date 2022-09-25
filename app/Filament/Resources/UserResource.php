@@ -24,6 +24,9 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
+    /**
+     * @return Builder<User>
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('id', auth()->id());
@@ -74,13 +77,16 @@ class UserResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+    // public static function getRelations(): array
+    // {
+    //     return [
+    //         //
+    //     ];
+    // }
 
+    /**
+     * @return array<string, string[]>
+     */
     public static function getPages(): array
     {
         return [
