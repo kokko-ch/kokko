@@ -39,6 +39,7 @@ task('npm:prune', function () {
 task('npm', [
     'npm:install',
     'npm:build',
+    'npm:prune',
 ]);
 
 task('deploy:writable')->disable();
