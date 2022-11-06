@@ -8,6 +8,7 @@ require 'recipe/laravel.php';
 
 set('repository', 'https://github.com/kokko-ch/kokko.git');
 set('bin/php', 'php81');
+set('keep_releases', 3);
 
 add('shared_files', []);
 add('shared_dirs', []);
