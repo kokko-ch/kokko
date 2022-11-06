@@ -31,6 +31,11 @@ task('npm:build', function () {
     run('nvm use --delete-prefix --lts && npm run build');
 });
 
+task('npm:prune', function () {
+    cd('{{release_or_current_path}}');
+    run('nvm use --delete-prefix --lts && npm prune --production');
+});
+
 task('npm', [
     'npm:install',
     'npm:build',
